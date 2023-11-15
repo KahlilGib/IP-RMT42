@@ -10,15 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Gadget.hasMany(models.Review)
+      Gadget.belongsTo(models.User)
+
     }
   }
   Gadget.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
+    imgUrl: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    categoryId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    rating: DataTypes.INTEGER,
+    categoryId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Gadget',

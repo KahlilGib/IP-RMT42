@@ -15,14 +15,24 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      imgUrl: {
+        type: Sequelize.STRING
+      },
       price: {
         type: Sequelize.INTEGER
       },
-      categoryId: {
+      rating: {
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.INTEGER
+      categoryId: {
+        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
+        references : {
+          model : {
+            tableName : 'Categories'
+          },
+          key : 'id'
+        }
       },
       createdAt: {
         allowNull: false,
