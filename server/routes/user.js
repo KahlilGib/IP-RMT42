@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.post('/add-user', ControllerUser.addUser);
 router.post('/login', ControllerUser.login);
+router.post('/login/google', ControllerUser.loginGoogle)
+router.post('/pub/login/google', ControllerUser.pubLoginGoogle)
+
 
 
 router.use(errorHandler)

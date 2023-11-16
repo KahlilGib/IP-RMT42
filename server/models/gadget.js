@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Gadget.hasMany(models.Review)
-      Gadget.belongsTo(models.User)
+      Gadget.hasMany(models.Review, {foreignKey: "gadgetId" , onDelete: 'cascade'})
+      Gadget.hasOne(models.Spec, { foreignKey: "gadgetId" })
+      Gadget.belongsTo(models.Category, {foreignKey: "categoryId"})
 
     }
   }
@@ -19,8 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     imgUrl: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    rating: DataTypes.INTEGER,
+    rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
     categoryId: DataTypes.INTEGER
   }, {
     sequelize,

@@ -2,31 +2,42 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Gadgets', {
+    await queryInterface.createTable('Specs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      imgUrl: {
-        type: Sequelize.STRING
-      },
-      rating: {
+      weight: {
         type: Sequelize.INTEGER
       },
-      categoryId: {
-        type: Sequelize.INTEGER,
+      display: {
+        type: Sequelize.STRING
+      },
+      os: {
+        type: Sequelize.STRING
+      },
+      chipset: {
+        type: Sequelize.STRING
+      },
+      memory: {
+        type: Sequelize.STRING
+      },
+      camera: {
+        type: Sequelize.STRING
+      },
+      battery: {
+        type: Sequelize.STRING
+      },
+      network: {
+        type: Sequelize.STRING
+      },
+      gadgetId: {
         type: Sequelize.INTEGER,
         references : {
           model : {
-            tableName : 'Categories'
+            tableName : 'Gadgets'
           },
           key : 'id'
         }
@@ -42,6 +53,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Gadgets');
+    await queryInterface.dropTable('Specs');
   }
 };

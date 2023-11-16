@@ -1,25 +1,25 @@
 const { User } = require("../models")
-const { Gadget } = require("../models")
+const { Review } = require("../models")
 const { signToken, verifyToken } = require("../helpers/jwt")
 
 const authorization = async (req, res, next) => {
     console.log(req.userData, "<<<User data")
     try {
-        let gadget = await Gadget.findByPk(req.params.id)
+        let review = await Review.findByPk(req.params.id)
 
         // console.log(req)
-        console.log(gadget)
+        console.log(review)
 
-        if (!gadget) {
+        if (!review) {
             throw { name: 'NotFound' }
 
         }
 
         if (req.userData.role !== 'admin') {
-            // Check Gadget API
+            // Check Review API
 
 
-            if (req.userData.id !== gadget.userId) {
+            if (req.userData.id !== review.userId) {
                 throw { name: 'Forbidden' }
             }
 
