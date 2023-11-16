@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2
 const streamifier = require('streamifier')
 const { v4: uuidv4 } = require('uuid')
 const nodeMailer = require("nodemailer")
+const axios = require('axios');
 require("dotenv").config();
 
 
@@ -220,6 +221,25 @@ class Controller {
         } catch (error) {
             console.log(error)
             next(error)
+        }
+    }
+
+    static async googleShopping(req, res, next) {
+        const gadget = await Gadget.findByPk(req.params.id)
+        
+        try {
+            const url = "https://www.searchapi.io/api/v1/search";
+            const params = {
+                "engine": "google_shopping",
+                "q": gadget.name,
+                "location": "California,United States",
+                "api_key": process.env.G_SHOP_API
+            };
+    
+            const response = await axios.get(url, { params });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
 

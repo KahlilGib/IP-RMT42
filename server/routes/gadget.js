@@ -14,6 +14,7 @@ router.patch('/gadget/:id',authentication,authorizationAdmin,upload.single('imgU
 router.patch('/gadget/:id/addRating',authentication,authorizationAdmin, Controller.addRating);
 router.get('/',authentication, Controller.getAllGadget);
 router.get('/gadgets',authentication, Controller.getAllGadget);
+router.get('/gadgets/:id/shop', Controller.googleShopping);
 router.get('/pub/gadgets', Controller.getAllGadgetPub);
 router.get('/gadget/:id',authentication, Controller.getGadget);
 router.get('/pub/gadget/:id', Controller.getGadgetPub);
