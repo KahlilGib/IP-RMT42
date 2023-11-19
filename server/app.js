@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(require('./routes/gadget'));
 // app.use(require('./routes/category'));
 app.use(require('./routes/user'));
-// app.use(require('./routes/review'));
+app.use(require('./routes/review'));
 app.use(express.static('public'));
 
 app.listen(PORT, () => {

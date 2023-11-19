@@ -28,7 +28,7 @@ class Controller {
     
             const info = await transporter.sendMail({
                 from: "GT Gadgets",
-                to : "kgibran",
+                to : "kgibran53@gmail.com",
                 subject: "Incoming New Phone!",
                 text: 'New phone has coming, lets checkout our website'
 
@@ -103,7 +103,7 @@ class Controller {
             const {name, description, imgUrl, categoryId} = req.body
 
             const gadget = await Gadget.create({name, description, imgUrl, categoryId})
-            await nodeMailer
+            
             res.status(201).json(gadget)
         } catch (error) {
             next(error)
@@ -181,7 +181,7 @@ class Controller {
     static async getGadgetPub(req, res, next) {
         try {
             const gadget = await Gadget.findByPk(req.params.id, {
-                include: Spec
+                include: [Spec, Category]
             })
             if(!gadget) {
                 throw({name : "NotFound"})

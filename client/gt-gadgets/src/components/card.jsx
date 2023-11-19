@@ -11,7 +11,7 @@ export default function Card({ gadget }) {
             className="card-img-top" alt="pic"></img>
         <div className="card-body">
             <h4 className="centered-text">{gadget.name}</h4>
-            <p className="centered-text">{gadget.Category.name}</p>
+            <p className="centered-text">{gadget.Category?.name}</p>
         </div>
     </div>
     </div>

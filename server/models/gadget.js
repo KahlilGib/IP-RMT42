@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Gadget.hasMany(models.Review, {foreignKey: "gadgetId" , onDelete: 'cascade'})
-      Gadget.hasOne(models.Spec, { foreignKey: "gadgetId" })
+      Gadget.hasMany(models.Review, {foreignKey: "gadgetId" , onDelete: 'CASCADE'})
+      Gadget.hasOne(models.Spec, { foreignKey: "gadgetId", onDelete: 'CASCADE' })
       Gadget.belongsTo(models.Category, {foreignKey: "categoryId"})
 
     }
