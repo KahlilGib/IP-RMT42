@@ -3,6 +3,7 @@ import Login from "../views/Auth/Login";
 import { createBrowserRouter , redirect} from "react-router-dom";
 import HomePage from "../views/HomePage";
 import { DetailGadgetPage } from "../views/DetailGadget";
+import FilterGadget from "../components/filterGadget";
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     {
       path: "/gadget/:id",
       element: <DetailGadgetPage />,
-    },
+    }
   ]);
 
   export default router;

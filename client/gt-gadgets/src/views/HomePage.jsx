@@ -4,6 +4,7 @@ import Header from '../components/header'
 import Navbar from '../components/sidebar'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import FilterButton from '../components/filterGadget'
 
 
 export default function HomePage() {
@@ -37,7 +38,12 @@ export default function HomePage() {
           <h1 className="gadgetListTitle">GTGadget</h1>
         </div>
 
+        
+        
+        <FilterButton></FilterButton>
+
         <div class="row row-cols-1 row-cols-md-2 g-4">
+
                
         {gadgetList.map((gadget) => { 
             return (  <Card key={gadget.id} gadget={gadget}></Card> )
